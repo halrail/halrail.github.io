@@ -1,11 +1,13 @@
 // --- キャッシュ設定 ---
 const CACHE_NAME = 'timetable-cache-v1';
 const FILES_TO_CACHE = [
-  '/School-timer/',
-  '/School-timer/index.html',
-  '/School-timer/style.css',
-  '/School-timer/app.js',
-  '/School-timer/manifest.json'
+  '/',
+  '/index.html',
+  '/style.css',
+  '/app.js',
+  '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png'
 ];
 
 // インストール時にキャッシュ
