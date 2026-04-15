@@ -1,3 +1,9 @@
+self.addEventListener('activate', () => {
+  self.registration.showNotification("SWテスト", {
+    body: "Service Worker は動いています"
+  });
+});
+
 // --- キャッシュ設定 ---
 const CACHE_NAME = 'timetable-cache-v1';
 const FILES_TO_CACHE = [
