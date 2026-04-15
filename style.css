@@ -1,0 +1,57 @@
+body {
+  font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+  padding: 16px;
+  max-width: 900px;
+  margin: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  vertical-align: top;
+}
+
+input[type="text"], input[type="time"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px;
+  margin-bottom: 6px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 8px 12px;
+}
+
+.small {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.section {
+  margin-bottom: 18px;
+}
+
+.sat-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.week-list {
+  font-size: 0.9em;
+  color: #333;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>時間割通知アプリ</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>時間割通知アプリ</h1>
+
+<div class="section small">
+  平日は1〜7限、土曜は1〜4限を入力できます。空欄は保存・通知されません。
+</div>
+
+<!-- 時間割テーブル -->
+<div class="section">
+  <h2>時間割入力</h2>
+  <table id="timetable">
+    <tr>
+      <th>時限</th>
+      <th>月</th>
+      <th>火</th>
+      <th>水</th>
+      <th>木</th>
+      <th>金</th>
+      <th>土（任意）</th>
+    </tr>
+
+    <script>
+      for (let p = 1; p <= 7; p++) {
+        document.write(`<tr><td>${p}限</td>`);
+        for (let d = 1; d <= 6; d++) {
+          document.write(`
+            <td>
+              <input type="text" placeholder="科目" data-day="${d}" data-period="${p}" class="subject">
+              <input type="text" placeholder="持ち物" data-day="${d}" data-period="${p}" class="items">
+              <input type="time" data-day="${d}" data-period="${p}" class="start">
+            </td>
+          `);
+        }
+        document.write("</tr>");
+      }
+    </script>
+  </table>
+
+  <div class="controls">
+    <button id="save">保存</button>
+    <button id="notify">通知を設定（10分前）</button>
+    <button id="clear">全通知クリア</button>
+    <button id="export">時間割をエクスポート</button>
+    <input type="file" id="import" accept="application/json">
+    <div class="small">※ 通知はブラウザの許可が必要です</div>
+  </div>
+</div>
+
+<!-- 土曜授業設定 -->
+<div class="section">
+  <h2>土曜授業の週設定</h2>
+
+  <div class="sat-controls">
+    <label><input type="checkbox" id="sat-this-week"> 今週は土曜授業がある</label>
+    <div class="small" id="this-week-label"></div>
+  </div>
+
+  <div style="margin-top:8px;">
+    <label class="small">手動で週番号を追加/削除（カンマ区切り）</label><br>
+    <input type="text" id="week-input" placeholder="例: 18,20,22">
+    <button id="add-weeks">追加</button>
+    <button id="remove-weeks">削除</button>
+  </div>
+
+  <div style="margin-top:8px;">
+    <div class="small">現在有効な土曜授業の週番号：</div>
+    <div class="week-list" id="enabled-weeks"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/School-timer/sw.js');
+  }
+</script>
+
+</body>
+</html>
